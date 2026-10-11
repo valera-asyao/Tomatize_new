@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -46,11 +47,18 @@ fun BottomNavBar(
     Surface(
         color = WhiteCard,
         shadowElevation = 8.dp,
-        modifier = modifier
-            .fillMaxWidth()
-            .height(70.dp)
+        modifier = modifier.fillMaxWidth()
     ) {
-        BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+        ) {
+            BoxWithConstraints(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(70.dp)
+            ) {
             val totalWidthPx = constraints.maxWidth.toFloat()
             val tabWidthPx = totalWidthPx / 5f
             val ovalWidthPx = 60.dp.value * (totalWidthPx / maxWidth.value)
@@ -137,6 +145,7 @@ fun BottomNavBar(
             }
         }
     }
+}
 }
 
 @Composable
